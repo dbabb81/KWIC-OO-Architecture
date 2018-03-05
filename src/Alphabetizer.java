@@ -6,10 +6,12 @@ import java.util.ArrayList;
  *
  * @author david
  */
-public class Alphabetizer {
+public class Alphabetizer implements Index {
     
     private ArrayList<ArrayList<Integer>> sortedIndexes = new ArrayList<>();
     private String word, comparison;
+    
+    public Alphabetizer() {}
     
     public void alphabetize(ArrayList<String> inputText, ArrayList<ArrayList<Integer>> shiftedIndexes) {
         for (int i = 0; i < shiftedIndexes.size(); i++) {
@@ -28,11 +30,9 @@ public class Alphabetizer {
             }
             sortedIndexes.set(index + 1, shiftedIndexes.get(i));
         }
-//        for (int i = 0; i < sortedIndexes.size(); i++) {
-//            System.out.println(sortedIndexes.get(i));
-//        }
     }
     
+    @Override
     public ArrayList<ArrayList<Integer>> getIndexes() {
         return this.sortedIndexes;
     }

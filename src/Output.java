@@ -22,12 +22,6 @@ public class Output {
                 output += " ";
             }
             sortedOutput.add(output);
-//            System.out.println(output);
-//            output = new LinkedList<>();
-//            for (int j = 0; j < sortedIndexes.get(i).size(); j++) {
-//                output.add(inputText.get(sortedIndexes.get(i).get(j)));
-//            }
-//            System.out.println(output);
         }
         Collections.sort(sortedOutput, Collator.getInstance(Locale.US));
         Collections.sort(sortedOutput, (String o1, String o2) -> {
@@ -45,8 +39,7 @@ public class Output {
             }
            
             return 0;
-        }); 
-        //System.out.println(sortedOutput);
+        });
         for (int i = 0; i < sortedOutput.size(); i++) {
             System.out.println(sortedOutput.get(i));
         }

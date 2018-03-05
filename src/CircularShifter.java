@@ -6,10 +6,12 @@ import java.util.ArrayList;
  *
  * @author david
  */
-public class CircularShifter {
+public class CircularShifter implements Index {
     
     private ArrayList<ArrayList<Integer>> indexesOfShiftedLines = new ArrayList<>();
     private ArrayList<Integer> indexesOfShiftedWords;
+    
+    public CircularShifter() {}
     
     public void shift(ArrayList<String> inputText, ArrayList<Integer> lineIndexes) {
         for (int i = 0; i < lineIndexes.size(); i++) {
@@ -28,11 +30,9 @@ public class CircularShifter {
                 indexesOfShiftedLines.add(indexesOfShiftedWords);
             }
         }
-//        for (int i = 0; i < indexesOfShiftedLines.size(); i++) {
-//            System.out.println(indexesOfShiftedLines.get(i));
-//        }
     }
     
+    @Override
     public ArrayList<ArrayList<Integer>> getIndexes() {
         return this.indexesOfShiftedLines;
     }
