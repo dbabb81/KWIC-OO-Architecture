@@ -1,8 +1,10 @@
 
 import java.text.Collator;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -13,6 +15,7 @@ import java.util.Locale;
 public class Output {
     
     private LinkedList<String> sortedOutput = new LinkedList<>();
+    private List<String> noise = Arrays.asList("a", "an", "the", "and", "or", "of", "to", "be", "is", "in", "out", "by", "as", "at", "off");
 
     public void print(ArrayList<String> inputText, ArrayList<ArrayList<Integer>> sortedIndexes) {
         for (int i = 0; i < sortedIndexes.size(); i++) {
@@ -40,9 +43,29 @@ public class Output {
            
             return 0;
         });
-        for (int i = 0; i < sortedOutput.size(); i++) {
-            System.out.println(sortedOutput.get(i));
+        for (String item : sortedOutput) {
+            
+            String searchWord = item.substring(0, item.indexOf(" "));
+            
+             if(!ignoreCase(searchWord, noise))
+            {
+                System.out.println(item);
+            }
+            
         }
+    }
+    
+    private boolean ignoreCase(String searchWord, List<String> noise)
+    {
+        for(String i : noise)
+        {
+            if(i.equalsIgnoreCase(searchWord))
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
     
     private int getValue(char letter) {
