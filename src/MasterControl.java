@@ -6,8 +6,8 @@
 public class MasterControl {
     
     private static Input input;
-    private static CircularShifter circularShifter;
-    private static Alphabetizer alphabetizer;
+    private static Shifter circularShifter;
+    private static Sorter alphabetizer;
     private static Output output;
     private static final String SOURCE_FILE = "test.txt";
     private static long tStart;
@@ -20,7 +20,7 @@ public class MasterControl {
         circularShifter = new CircularShifter();
         circularShifter.shift(input.getText(), input.getLineIndexes());
         alphabetizer = new Alphabetizer();
-        alphabetizer.alphabetize(input.getText(), circularShifter.getShiftedIndexes());
+        alphabetizer.sort(input.getText(), circularShifter.getShiftedIndexes());
         output = new Output();
         output.print(input.getText(), alphabetizer.getSortedIndexes());
         tEnd = System.nanoTime();

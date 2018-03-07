@@ -6,12 +6,13 @@ import java.util.ArrayList;
  *
  * @author david
  */
-public class Alphabetizer {
+public class Alphabetizer implements Sorter {
     
     private final ArrayList<ArrayList<Integer>> sortedIndexes = new ArrayList<>();
     private String word, comparison;
     
-    public void alphabetize(ArrayList<String> inputText, ArrayList<ArrayList<Integer>> shiftedIndexes) {
+    @Override
+    public void sort(ArrayList<String> inputText, ArrayList<ArrayList<Integer>> shiftedIndexes) {
         /* Retreives text from the original input and uses the indexes
            from the shifted lines to compare each first word to determine
            the alphabetical order.  The sorted indexes are placed into an array list.
@@ -34,6 +35,7 @@ public class Alphabetizer {
         }
     }
     
+    @Override
     public ArrayList<ArrayList<Integer>> getSortedIndexes() {
         /* Passes the array list of sorted indexes to the output
            class for the final processing.
