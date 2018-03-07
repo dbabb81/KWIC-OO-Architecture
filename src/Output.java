@@ -14,10 +14,13 @@ import java.util.Locale;
  */
 public class Output {
     
-    private LinkedList<String> sortedOutput = new LinkedList<>();
-    private List<String> noise = Arrays.asList("a", "an", "the", "and", "or", "of", "to", "be", "is", "in", "out", "by", "as", "at", "off");
+    private final LinkedList<String> sortedOutput = new LinkedList<>();
+    private final List<String> noise = Arrays.asList("a", "an", "the", "and", "or", "of", "to", "be", "is", "in", "out", "by", "as", "at", "off");
 
     public void print(ArrayList<String> inputText, ArrayList<ArrayList<Integer>> sortedIndexes) {
+        /* Retrieves text from the input and adds it to a linked list
+           based on the indexes of each sorted line.
+        */
         for (int i = 0; i < sortedIndexes.size(); i++) {
             String output = "";
             for (int j = 0; j < sortedIndexes.get(i).size(); j++) {
@@ -26,6 +29,9 @@ public class Output {
             }
             sortedOutput.add(output);
         }
+        /* This is the last step of the sort which ensures
+           lowercase words are sorted before uppercase words.
+        */
         Collections.sort(sortedOutput, Collator.getInstance(Locale.US));
         Collections.sort(sortedOutput, (String o1, String o2) -> {
             
@@ -43,6 +49,9 @@ public class Output {
            
             return 0;
         });
+        /* If the first word in a sorted line is a noise word,
+           it will be removed from the final output.
+        */
         for (String item : sortedOutput) {
             
             String searchWord = item.substring(0, item.indexOf(" "));
@@ -57,7 +66,8 @@ public class Output {
     
     private boolean ignoreCase(String searchWord, List<String> noise)
     {
-        for(String i : noise)
+        /* Helper function to check for noise words. */
+        for (String i : noise)
         {
             if(i.equalsIgnoreCase(searchWord))
             {
@@ -69,8 +79,8 @@ public class Output {
     }
     
     private int getValue(char letter) {
-        /*  Assigns a unique integer value to each character
-            in the list.
+        /*  Helper function that assigns a unique integer 
+            value to each character in the list.
         */
         switch (letter) {
             case ' ':

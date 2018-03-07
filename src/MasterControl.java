@@ -18,11 +18,11 @@ public class MasterControl {
         input = new Input();
         input.parse(SOURCE_FILE);
         circularShifter = new CircularShifter();
-        circularShifter.shift(input.getText(), input.getIndexes());
+        circularShifter.shift(input.getText(), input.getLineIndexes());
         alphabetizer = new Alphabetizer();
-        alphabetizer.alphabetize(input.getText(), circularShifter.getIndexes());
+        alphabetizer.alphabetize(input.getText(), circularShifter.getShiftedIndexes());
         output = new Output();
-        output.print(input.getText(), alphabetizer.getIndexes());
+        output.print(input.getText(), alphabetizer.getSortedIndexes());
         tEnd = System.nanoTime();
         
         System.out.print("Finished in: ");
